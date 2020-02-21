@@ -1,4 +1,4 @@
-浙江大学数据结构[数据结构](https://www.icourse163.org/course/ZJU-93001 "数据结构")
+浙江大学[数据结构](https://www.icourse163.org/course/ZJU-93001 "数据结构")
 学习笔记，方便以后查阅
 
 #### 如何编译
