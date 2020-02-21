@@ -28,6 +28,12 @@ Queue CreateQueue()
 	return Q;
 }
 
+// 是否为空
+bool IsEmpty(Queue Q)
+{
+	return (Q->front == nullptr);
+}
+
 // 释放
 void FreeQueue(Queue Q)
 {
@@ -38,23 +44,17 @@ void FreeQueue(Queue Q)
 		return;
 	}
 
-  	Node* p = Q->front;
-  	Node* tmp = nullptr;
-  	while(p)
-  	{
-  		tmp = p->Next;
-  		free(p);
-  		p = tmp;
-  	}
+	Node* p = Q->front;
+	Node* tmp = nullptr;
+	while(p)
+	{
+		tmp = p->Next;
+		free(p);
+		p = tmp;
+	}
 
-  	free(Q);
-  	Q = nullptr;
-}
-
-// 是否为空
-bool IsEmpty(Queue Q)
-{
-	return (Q->front == nullptr);
+	free(Q);
+	Q = nullptr;
 }
 
 // 入队
