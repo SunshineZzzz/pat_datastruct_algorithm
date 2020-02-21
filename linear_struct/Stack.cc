@@ -39,7 +39,7 @@ void FreeStack(Stack S)
 		p = tmp;
 	}
 
-	free(S)
+	free(S);
 	S = nullptr;
 }
 
