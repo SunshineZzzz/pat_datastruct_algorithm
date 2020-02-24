@@ -1,5 +1,5 @@
 #ifdef _WIN32
-#define _CRT_SECURE_NO_WARNINGS
+	#define _CRT_SECURE_NO_WARNINGS
 #endif
 
 #include <stdio.h>
@@ -85,17 +85,17 @@ void PreOrderTraversalNoRecursion(BinTree root)
 	std::vector<BinTree> S;
 	BinTree T = root;
 
-	while(T || !S.empty())
+	while (T || !S.empty())
 	{
-		while(T)
+		while (T)
 		{
 			printf("%d ", T->Data);
 			S.push_back(T);
 			T = T->Left;
 		}
-		if(!S.empty())
+		if (!S.empty())
 		{
-			T = S[S.size()-1];
+			T = S[S.size() - 1];
 			S.pop_back();
 			T = T->Right;
 		}
@@ -129,7 +129,7 @@ void InOrderTraversalNoRecursion(BinTree root)
 		// 当堆栈不为空
 		if (!S.empty())
 		{
-			T = S[S.size()-1];
+			T = S[S.size() - 1];
 			S.pop_back();
 			printf("%d ", T->Data);
 			// 访问右节点
@@ -157,24 +157,50 @@ void PostOrderTraversalNoRecursion(BinTree root)
 	std::vector<BinTree> S2;
 	BinTree T = root;
 	S1.push_back(T);
-	while(!S1.empty())
+	while (!S1.empty())
 	{
-		T = S1[S.size()-1];
+		T = S1[S1.size() - 1];
 		S1.pop_back();
 		S2.push_back(T);
-		if(T->Left)
+		if (T->Left)
 		{
 			S1.push_back(T->Left);
 		}
-		if(T->Right)
+		if (T->Right)
 		{
 			S1.push_back(T->Right);
 		}
 	}
 	std::reverse(S2.begin(), S2.end());
-	for(const auto& elem: S2)
+	for (const auto& elem : S2)
 	{
 		printf("%d ", elem->Data);
+	}
+}
+
+// 层次遍历
+void LevelOrderTraversal(BinTree root)
+{
+	if (!root)
+	{
+		return;
+	}
+
+	std::vector<BinTree> Q;
+	Q.push_back(root);
+	while (!Q.empty())
+	{
+		BinTree T = Q[0];
+		Q.erase(Q.begin());
+		printf("%d ", T->Data);
+		if (T->Left)
+		{
+			Q.push_back(T->Left);
+		}
+		if (T->Right)
+		{
+			Q.push_back(T->Right);
+		}
 	}
 }
 
@@ -205,6 +231,10 @@ int main()
 
 	printf("非递归后序遍历：");
 	PostOrderTraversalNoRecursion(root);
+	printf("\n");
+
+	printf("层次遍历：");
+	LevelOrderTraversal(root);
 	printf("\n");
 
 	FreeBinTree(root);
