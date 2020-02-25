@@ -204,6 +204,45 @@ void LevelOrderTraversal(BinTree root)
 	}
 }
 
+// 输出叶子节点
+void PreOrderPrintLeaves(BinTree root)
+{
+	if(root)
+	{
+		if(!root->Left && !root->Right)
+		{
+			printf("%d ", root->Data);
+		}
+		else
+		{
+			PreOrderPrintLeaves(root->Left);
+			PreOrderPrintLeaves(root->Right);
+		}
+	}
+}
+
+// 二叉树的高度
+int PostOrderGetHeight(BinTree root)
+{
+	int HL, HR, MaxH;
+	if(root)
+	{
+		// 求左子树的深度
+		HL = PostOrderGetHeight(root->Left);
+		// 求右子树的深度
+		HR = PostOrderGetHeight(root->Right);
+		// 取左右子树较大的深度
+		MaxH = (HL > HR) ? HL : HR;
+		// 返回树的深度
+		return (MaxH + 1);
+	}
+	else
+	{
+		// 空树深度为0
+		return 0;
+	}
+}
+
 int main()
 {
 	BinTree root;
@@ -235,6 +274,14 @@ int main()
 
 	printf("层次遍历：");
 	LevelOrderTraversal(root);
+	printf("\n");
+
+	printf("树的叶子节点：");
+	PreOrderPrintLeaves(root);
+	printf("\n");
+
+	printf("树的深度：");
+	printf("%d", PostOrderGetHeight(root));
 	printf("\n");
 
 	FreeBinTree(root);

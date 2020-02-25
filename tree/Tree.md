@@ -7,8 +7,11 @@
 	* [特殊二叉树](#特殊二叉树)
 	* [重要性质](#重要性质)
 	* [二叉树的遍历](#二叉树的遍历)
-    * [二叉树的非递归遍历](#二叉树的非递归遍历)
-    * [二叉树的层次遍历](#二叉树的层次遍历)
+	* [二叉树的非递归遍历](#二叉树的非递归遍历)
+	* [二叉树的层次遍历](#二叉树的层次遍历)
+	* [输出叶子结点](#输出叶子结点)
+	* [树的高度](#树的高度)
+	* [由两种遍历序列确定二叉树](#由两种遍历序列确定二叉树)
 * [抽象数据类型定义](#抽象数据类型定义)
 * [顺序存储结构](#顺序存储结构)
 * [链式存储](#链式存储)
@@ -169,19 +172,19 @@ A (B D F E) (C G H I ) 先是根，然后对左边递归，然后再对右边递
 
 ```
 void InOrderTraversal(BinTree BT){
-    BinTree T = BT;
-    Stack S = CreateStack(MaxSize);  /*创建并初始化堆栈S*/
-    while(T || !IsEmpty(S)){
-        while(T){  /*一直向左并将沿途结点压入堆栈*/
-            Push(S, T);  // 第一次
-            T = T->Left;
-        }
-        if (!IsEmpty(S)){
-            T = Pop(S);  /*结点弹出堆栈*/  // 第二次
-            printf("%5d", T->Data);  /*（访问）打印结点*/
-            T = T->Right;  /*转向右子树*/
-        }
-    }
+	BinTree T = BT;
+	Stack S = CreateStack(MaxSize);  /*创建并初始化堆栈S*/
+	while(T || !IsEmpty(S)){
+		while(T){  /*一直向左并将沿途结点压入堆栈*/
+			Push(S, T);  // 第一次
+			T = T->Left;
+		}
+		if (!IsEmpty(S)){
+			T = Pop(S);  /*结点弹出堆栈*/  // 第二次
+			printf("%5d", T->Data);  /*（访问）打印结点*/
+			T = T->Right;  /*转向右子树*/
+		}
+	}
 }
 ```
 
@@ -235,20 +238,56 @@ D抛出来，左右儿子放进去，D没有左右儿子了，这个就没有元
 
 **3.若该元素所指结点的左，右孩子结点非空，则将其左，右孩子的指针顺序入队。**
 
-```text
+```
 void LevelOrderTraversal(BinTree BT){
-    Queue Q; BinTree T;
-    if (!BT) return;  /*若是空树则直接返回*/
-    Q = CreateQueue(MaxSize);  /*创建并初始化队列Q*/
-    AddQ(Q, BT);
-    while (!IsEmptyQ(Q)){
-        T = DeleteQ(Q);
-        printf("%d\n", T->Data);  /*访问取出队列的结点*/
-        if (T->Left) AddQ(Q, T->Left);
-        if (T->Right) AddQ(Q, T->Right);
-    }
+	Queue Q; BinTree T;
+	if (!BT) return;  /*若是空树则直接返回*/
+	Q = CreateQueue(MaxSize);  /*创建并初始化队列Q*/
+	AddQ(Q, BT);
+	while (!IsEmptyQ(Q)){
+		T = DeleteQ(Q);
+		printf("%d\n", T->Data);  /*访问取出队列的结点*/
+		if (T->Left) AddQ(Q, T->Left);
+		if (T->Right) AddQ(Q, T->Right);
+	}
 }
 ```
+
+## 输出叶子结点
+在二叉树的遍历算法中增加检测结点的"左右子树是否都为空"。
+```
+void PreOrderPrintLeaves(BinTree BT){
+	if (BT){
+		if(!BT->Left && !BT->Right)
+			printf("%d ", BT->Data);
+		PreOrderPrintLeaves(BT->Left);
+		PreOrderPrintLeaves(BT->Right);
+	}
+}
+```
+## 树的高度
+
+```
+int PostOrderGetHeight(BinTree BT){
+    int HL, HR, MaxH;
+    if(BT){
+        HL = PostOrderGetHeight(BT->Left);  /*求左子树的深度*/
+        HR = PostOrderGetHeight(BT->Right); /*求右子树的深度*/
+        MaxH = (HL > HR) ? HL : HR;  /*取左右子树较大的深度*/
+        return (MaxH + 1);  /*返回树的深度*/
+    }
+    else return 0;  /*空树深度为0*/
+}
+```
+
+## 由两种遍历序列确定二叉树
+![二叉树遍历12](../img/binary_tree_traversal12.jpg)
+
+![二叉树遍历13](../img/binary_tree_traversal13.jpg)
+
+![二叉树遍历14](../img/binary_tree_traversal14.jpg)
+
+![二叉树遍历15](../img/binary_tree_traversal15.jpg)
 
 # 抽象数据类型定义
 
@@ -282,6 +321,8 @@ void LevelOrderTraversal(BinTree BT){
 # 链式存储
 
 ![二叉树10](../img/binary_tree10.jpg)
+
+- [x] [树的链式存储结构实现](./Tree.cc)
 
 # 相关代码
 - [x] [顺序查找](./Sequential_search.cc)
