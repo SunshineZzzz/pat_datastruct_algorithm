@@ -56,7 +56,7 @@ int Find(ElementType x, List* pList)
 void Insert(ElementType x, int i, List* pList)
 {
 	int j;
-	// 表空间已满，不能插入
+	// 空间已满，不能插入
 	if(pList->Last == MAXSIZE - 1)
 	{
 		printf("list full\n");
@@ -70,6 +70,7 @@ void Insert(ElementType x, int i, List* pList)
 		return;
 	}
 
+	// 倒着由前向后复制
 	for(j = pList->Last; j >= i-1; j--)
 	{
 		pList->Data[j+1] = pList->Data[j];
@@ -91,12 +92,14 @@ void Delete(int i, List* pList)
 		return;
 	}
 
+	// 正着又后向前复制
 	for(j=i; j<=pList->Last; j++)
 	{
 		pList->Data[j-1] = pList->Data[j];
 	}
 
 	pList->Last--;
+	
 	return;
 }
 

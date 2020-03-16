@@ -58,6 +58,12 @@ int MaxSubseqSum2(int A[], int N)
 	return MaxSum;
 }
 
+// 返回三者中最大值
+int Max3(int A, int B, int C)
+{
+	return (A>B)?((A>C)?A:C):((B>C)?B:C);
+}
+
 // 方法三：分治法
 // 分治法”，简单来说就是把一个大的问题分解成多个小问题求解，再从所有小的解里面寻求最优解。
 // 对于此问题而言，可以把一个大的序列分为两个小的序列，再把小的序列分为更小的两个序列，…，
@@ -66,13 +72,6 @@ int MaxSubseqSum2(int A[], int N)
 // 右边最大子列和
 // 横跨划分边界的最大子列和
 // 时间复杂度 T(n)=O(nlogn)
-// 返回三者中最大值
-int Max3(int A, int B, int C)
-{
-	return (A>B)?((A>C)?A:C):((B>C)?B:C);
-}
-
-// 分治法
 int DivideAndConquer(int a[], int left, int right)
 {
 	// 递归结束条件：子列只有一个数字
