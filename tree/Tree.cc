@@ -27,6 +27,7 @@ BinTree CreateNode(ElementType Data)
 	BT->Data = Data;
 	BT->Left = nullptr;
 	BT->Right = nullptr;
+
 	return BT;
 }
 
@@ -153,7 +154,9 @@ void PostOrderTraversal(BinTree root)
 // 左右根 = 反序(根右左)
 void PostOrderTraversalNoRecursion(BinTree root)
 {
+	// 堆栈
 	std::vector<BinTree> S1;
+	// 堆栈
 	std::vector<BinTree> S2;
 	BinTree T = root;
 	S1.push_back(T);
@@ -186,6 +189,7 @@ void LevelOrderTraversal(BinTree root)
 		return;
 	}
 
+	// 队列
 	std::vector<BinTree> Q;
 	Q.push_back(root);
 	while (!Q.empty())

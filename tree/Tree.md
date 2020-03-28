@@ -349,4 +349,4 @@ int PostOrderGetHeight(BinTree BT){
 
 # 相关代码
 
-- [x] [顺序查找](./Sequential_search.cc)
+- [x] [顺序查找实现](./Sequential_search.cc)

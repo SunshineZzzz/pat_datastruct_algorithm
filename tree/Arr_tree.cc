@@ -31,13 +31,15 @@ public:
 	ArrayTree()
 	{
 		m_arr.reserve(1024);
+		// 0下标占位
+		m_arr.emplace_back("");
 	}
 	~ArrayTree()
 	{
 	}
 
 	// 从标准输入中读取
-	// 按照送上到下从左到右的顺序读入
+	// 按照从上到下从左到右的顺序读入
 	void ReadStdIn()
 	{
 		std::string temp;
@@ -54,67 +56,68 @@ public:
 	// 判断二叉树是否为空
 	bool IsEmpty()
 	{
-		return m_arr.empty();
+		return m_arr.size() <= 1;
 	}
 	// 返回根节点
 	std::string GetRoot()
 	{
-		return m_arr[0];
+		if (m_arr.size() > 1)
+		{
+			return m_arr[1];
+		}
+
+		return "^";
 	}
 	// 返回指定节点的父节点
 	bool GetParent(size_t index, std::string& parent)
 	{
-		if (index <= 0 || index > m_arr.size())
+		if (index < 1 || index > m_arr.size())
 		{
 			return false;
 		}
 
-		if (!(index - 1))
+		if (index == 1)
 		{
-			parent =  m_arr[0];
+			parent =  m_arr[1];
 			return true;
 		}
 
-		parent = m_arr[(index / 2) - 1];
+		parent = m_arr[index / 2];
 		return true;
 	}
 	// 返回指定节点的左孩子
 	bool GetLeftChild(size_t index, std::string& leftchild)
 	{
-		size_t rindex = index - 1;
-
-		if (index <= 0 || index > m_arr.size())
+		if (index < 1 || index > m_arr.size())
 		{
 			return false;
 		}
 
-		if (2 * rindex + 1 > m_arr.size())
+		if (2 * index > m_arr.size())
 		{
 			leftchild = "";
 			return true;
 		}
 
-		leftchild = m_arr[2 * rindex + 1];
+		leftchild = m_arr[2 * index];
 		return true;
 
 	}
 	// 返回指定节点的右孩子
 	bool GetRightChild(size_t index, std::string& rightchild)
 	{
-		size_t rindex = index - 1;
-
-		if (index <= 0 || index > m_arr.size())
+		if (index < 1 || index > m_arr.size())
 		{
 			return false;
 		}
 
-		if (2 * rindex + 2 > m_arr.size())
+		if (2 * index + 1 > m_arr.size())
 		{
 			rightchild = "";
 			return true;
 		}
 
-		rightchild = m_arr[2 * rindex + 2];
+		rightchild = m_arr[2 * index + 1];
 		return true;
 	}
 	// 从上到下从左到右顺序比遍历打印
@@ -126,13 +129,19 @@ public:
 			return;
 		}
 
-		int i = 1;
+		int i = 0;
 		for (const auto& elem : m_arr)
 		{
+			if(i == 0)
+			{
+				continue;
+			}
+
 			std::cout << i++ << "-" << elem << " ";
 		}
 		std::cout << "\n";
 	}
+
 private:
 	// 动态数组
 	// 按照送上到下从左到右的顺序存储
