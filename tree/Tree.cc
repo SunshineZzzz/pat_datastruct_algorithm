@@ -83,6 +83,7 @@ void PreOrderTraversal(BinTree root)
 // 先序遍历非递归
 void PreOrderTraversalNoRecursion(BinTree root)
 {
+	// 堆栈
 	std::vector<BinTree> S;
 	BinTree T = root;
 
