@@ -6,3 +6,6 @@ add_test(NAME Arr_tree COMMAND Arr_tree)
 
 add_executable(Tree Tree.cc)
 add_test(NAME Tree COMMAND Tree)
+
+add_executable(Isomorphic Isomorphic.cc)
+add_test(NAME Isomorphic COMMAND Isomorphic)
