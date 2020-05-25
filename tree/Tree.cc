@@ -6,6 +6,7 @@
 #include <malloc.h>
 #include <vector>
 #include <algorithm>
+#include <unordered_map>
 
 typedef int ElementType;
 typedef struct TreeNode* BinTree;
@@ -81,8 +82,10 @@ void PreOrderTraversal(BinTree root)
 }
 
 // 先序遍历非递归
+// 先序遍历 - 第1次访问该节点
 void PreOrderTraversalNoRecursion(BinTree root)
 {
+	// 堆栈
 	std::vector<BinTree> S;
 	BinTree T = root;
 
@@ -115,6 +118,7 @@ void InOrderTraversal(BinTree root)
 }
 
 // 中序遍历非递归
+// 中序遍历 - 第2次访问该节点
 void InOrderTraversalNoRecursion(BinTree root)
 {
 	std::vector<BinTree> S;

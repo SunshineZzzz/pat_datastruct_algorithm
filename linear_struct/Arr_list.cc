@@ -70,7 +70,7 @@ void Insert(ElementType x, int i, List* pList)
 		return;
 	}
 
-	// 倒着由前向后复制
+	// 倒着由前一个元素向后一个元素复制
 	for(j = pList->Last; j >= i-1; j--)
 	{
 		pList->Data[j+1] = pList->Data[j];
@@ -92,7 +92,7 @@ void Delete(int i, List* pList)
 		return;
 	}
 
-	// 正着又后向前复制
+	// 正着由后一个元素向前一个元素复制
 	for(j=i; j<=pList->Last; j++)
 	{
 		pList->Data[j-1] = pList->Data[j];
@@ -112,7 +112,7 @@ int FindKth(int k, List* pList, ElementType* elem)
 		return -1;
 	}
 
-	*elem = pList->Data[k];
+	*elem = pList->Data[k - 1];
 	return 0;
 }
 
