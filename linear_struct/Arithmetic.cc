@@ -21,7 +21,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// 线性栈的大小
+// 栈的大小
 #define stack_size 64
 // 是否是运算符
 #define is_operator(c) (c == '+' || c == '-' || c == '*' || c == '/')
