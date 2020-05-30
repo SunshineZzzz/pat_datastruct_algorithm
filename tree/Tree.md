@@ -568,6 +568,8 @@ BinTree Insert(ElementType X, BinTree BST){
 
 ![二叉搜索树26](../img/bst26.jpg)
 
+- [x] [二叉搜索树实现](./BinarySearchTree.cc)
+
 # 相关代码
 
 - [x] [顺序查找实现](./Sequential_search.cc)
