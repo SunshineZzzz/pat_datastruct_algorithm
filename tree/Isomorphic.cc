@@ -149,6 +149,7 @@ Tree BuildTree(struct TreeNode T[])
 	return Root;
 }
 
+// 判断二叉树同构
 int Isomorphic(Tree R1, Tree R2)
 {
 	// 两个树都是叶子节点，返回同构
@@ -169,6 +170,11 @@ int Isomorphic(Tree R1, Tree R2)
 		return 0;
 	}
 
+	// 不需要交换
+	// 2Left 都为空
+	// 2Left 都不为空，并且value相等
+	// 剩下的都是要交换的
+
 	// 两个树的左子树都为空，返回两个树的右子树是否同构
 	if((T1[R1].Left == Null) && (T2[R2].Left == Null))
 	{
@@ -186,7 +192,7 @@ int Isomorphic(Tree R1, Tree R2)
 	// 两个树的左右子树需要交换，返回这两个树的左子树和右子树是否同构 并且 右子树和左子树是否同构
 	else
 	{
-		return ( Isomorphic( T1[R1].Left, T2[R2].Right) && 
+		return ( Isomorphic( T1[R1].Left, T2[R2].Right ) && 
 			Isomorphic( T1[R1].Right, T2[R2].Left ) );
 	}
 }

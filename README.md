@@ -2,7 +2,7 @@
 学习笔记，方便以后查阅
 
 #### 如何编译
-```
+```sh
 mkdir build
 cd build
 cmake ..

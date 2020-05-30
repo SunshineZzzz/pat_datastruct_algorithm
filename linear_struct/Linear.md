@@ -110,7 +110,7 @@ front == rear时，队列为空，rear是指向队列中实际的最后一个元
 1. 根据size是0还是1去判断队列是空的还是满的，当插入一个元素时，tag为1，删除一个元素时，tag为0，所以搞不清楚是空还是满的时候，就要去看这个tag，这个tag就代表了最后一个元素是插入还是删除，那么就能知道到底是空还是满。
 2. 数组不放满，不放n个元素，最多只放n-1个元素。
 (1) 入队列
-```
+```C++
 void AddQ(Queue PtrQ, ElementType item){
     if ((PtrQ->rear + 1) % MaxSize==PtrQ->front){
         printf("队列满");
@@ -127,7 +127,7 @@ void AddQ(Queue PtrQ, ElementType item){
 当前这个状态就是满的，要加入一个元素，rear要加1，rear加1跟front碰上了，所以这个时候我们就认为它是满的，这是一个循环队列，一个个放，5的下一个位置是0，那么在程序上面怎么实现5的下一个变成0呢？我们用求余函数，5+1对6求余就是等于0了，这是我们实现循环队列的方法。
 
 (2)出队列
-```
+```C++
 ElementType DeleteQ(Queue PtrQ){
     if (PtrQ->front == PtrQ->rear){
         printf("队列空");

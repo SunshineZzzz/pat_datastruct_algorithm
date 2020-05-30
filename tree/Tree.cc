@@ -6,7 +6,6 @@
 #include <malloc.h>
 #include <vector>
 #include <algorithm>
-#include <unordered_map>
 
 typedef int ElementType;
 typedef struct TreeNode* BinTree;

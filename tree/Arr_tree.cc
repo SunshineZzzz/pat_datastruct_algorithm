@@ -78,7 +78,7 @@ public:
 
 		if (index == 1)
 		{
-			parent =  m_arr[1];
+			parent = m_arr[1];
 			return true;
 		}
 
