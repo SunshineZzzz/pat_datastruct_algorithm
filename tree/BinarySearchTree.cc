@@ -227,6 +227,6 @@ int main(){
 	InOrderTraversal(BST);
 	std::cout << std::endl;
 
-	FreeBinTree();
+	FreeBinTree(BST);
 	return 0;
 }

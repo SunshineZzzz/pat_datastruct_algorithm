@@ -9,3 +9,6 @@ add_test(NAME Tree COMMAND Tree)
 
 add_executable(Isomorphic Isomorphic.cc)
 add_test(NAME Isomorphic COMMAND Isomorphic)
+
+add_executable(BinarySearchTree BinarySearchTree.cc)
+add_test(NAME BinarySearchTree COMMAND BinarySearchTree)
