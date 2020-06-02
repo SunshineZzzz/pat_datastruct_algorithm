@@ -621,6 +621,10 @@ BinTree Insert(ElementType X, BinTree BST){
 
 ## **平衡二叉树的调整**
 
+**1.RR 单旋**
+
+* 当"插入结点"(BR)是"被破坏平衡结点"(A)右子树的右子树时，即 RR 插入时，采用 RR 旋转调整
+
 ![平衡二叉树9](../img/avl9.jpg)
 
 ![平衡二叉树10](../img/avl10.jpg)
@@ -637,6 +641,21 @@ BinTree Insert(ElementType X, BinTree BST){
 
 ![平衡二叉树13](../img/avl13.jpg)
 
+![平衡二叉树13_1](../img/avl13_1.jpg)
+
+```C++
+AVLTree RRRotation(AVLTree A){
+    AVLTree B = A->right;   // B 为 A 的右子树  
+    A->right = B->left;    // B 的左子树挂在 A 的右子树上 
+    B->left = A;   //  A 挂在 B 的左子树上 
+    return B;  // 此时 B 为根结点了   
+}
+```
+
+**2.LL 单旋**
+
+* 当"插入结点"(BL)是"被破坏平衡结点"(A)**左子树**的**左子树**时，即 LL 插入，采用 LL 旋转调整
+
 ![平衡二叉树14](../img/avl14.jpg)
 
 把Aug拎上来，把Mar压下去
@@ -645,11 +664,61 @@ BinTree Insert(ElementType X, BinTree BST){
 
 ![平衡二叉树16](../img/avl16.jpg)
 
+![平衡二叉树16_1](../img/avl16_1.jpg)
+
+```C++
+AVLTree LLRotation(AVLTree A){
+    // 此时根节点是 A 
+    AVLTree B = A->left;  // B 为 A 的左子树  
+    A->left = B->right;   // B 的右子树挂在 A 的左子树上 
+    B->right = A;     //  A 挂在 B 的右子树上 
+    return B;  // 此时 B 为根结点了 
+}
+```
+
+**3.LR 双旋**
+
+* 当"插入结点"(CL 或者 CR)是"被破坏平衡结点"(A)左子树的右子树时，即 LR 插入，采用 LR 旋转调整
+
 ![平衡二叉树17](../img/avl17.jpg)
 
 ![平衡二叉树18](../img/avl18.jpg)
 
+基本思想是先将 B 作为根结点进行 **RR 单旋**转化为 LL 插入，再将 A 作为根结点进行 **LL 单旋**（先 RR 再 LL）
+示意图：
+
+![平衡二叉树18_1](../img/avl18_1.jpg)
+
+```C++
+AVLTree LRRotation(AVLTree A){
+    // 先 RR 单旋
+    A->left = RRRotation(A->left);
+    // 再 LL 单旋 
+    return LLRotation(A);
+}
+```
+总结：叫 LR 双旋是从上到下看，而实际先 RR 单旋再 LL 单旋是从下往上的过程
+
+**4. RL 双旋**
+
+当"插入结点"(CL 或者 CR)是"被破坏平衡结点"(A)**右子树**的**左子树**时，即 RL 插入，采用 RL 旋转调整
+
 ![平衡二叉树19](../img/avl19.jpg)
+
+基本思想是先将 B 作为根结点进行 **LL 单旋**转化为 RR 插入，再将 A 作为根结点进行 **RR单旋**（先 LL 再 RR）
+
+示意图：
+![平衡二叉树19_1](../img/avl19_1.jpg)
+
+```C++
+AVLTree RLRotation(AVLTree A){
+    // 先 LL 单旋
+    A->right = LLRotation(A->right);
+    // 再 RR 单旋 
+    return RRRotation(A); 
+}
+```
+总结：叫 RL 双旋是从上到下看，而实际先 LL 单旋再 RR 单旋是从下往上的过程
 
 平衡二叉树调整的模式任何情况都归结于这4种模式，RR, LL, RL, LR旋转，而这4种模式怎么判别，就是看插入结点把谁破坏了，它跟被破坏者之间是什么关系，是在右边的左边，还是左边的左边，那么就分别用不同的模式去调整它，不过在调整的时候要记住，它是一个查找树，必须要保证左边小，右边大
 
