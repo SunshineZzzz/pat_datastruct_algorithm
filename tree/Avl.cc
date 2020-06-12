@@ -98,7 +98,7 @@ AVLTree RRRotation(AVLTree A)
 	// B的左子树挂到A的右子树上
 	A->right = B->left;
 	// A挂到B的左子树上
-	B->left = A
+	B->left = A;
 	// 重新计算高度
 	A->height = Max(GetHeight(A->left), GetHeight(A->right)) + 1;
 	B->height = Max(GetHeight(B->left), GetHeight(B->right)) + 1;
@@ -111,7 +111,7 @@ AVLTree RRRotation(AVLTree A)
 // 		A 				A 			C
 // B 		=>  	C 		=> B 	 	A
 // 		C       B
-AVLTree LRRoation(AVLTree A)
+AVLTree LRRotation(AVLTree A)
 {
 	// 先RR单旋
 	A->left = RRRotation(A->left);
@@ -124,7 +124,7 @@ AVLTree LRRoation(AVLTree A)
 // 	A 				A 					C
 // 		B 		=>  	C 		=> A 	 	B
 // 	C       				B
-AVLTree RLRoation(AVLTree A)
+AVLTree RLRotation(AVLTree A)
 {
 	// 先LL单旋
 	A->right = LLRotation(A->right);
@@ -160,7 +160,7 @@ AVLTree Insert(AVLTree A, int x)
 				else if (x > A->left->data)
 				{
 					// 值为x的插入节点 是 被破坏节点A的左子树右边，LR双旋
-					A = LRRoation(A);
+					A = LRRotation(A);
 				}
 			}
 		}
@@ -174,12 +174,12 @@ AVLTree Insert(AVLTree A, int x)
 				if (x > A->right->data)
 				{
 					// 值为x的插入节点 是 被破坏节点A的右子树右边，RR单旋
-					A = RRRoation(A);
+					A = RRRotation(A);
 				}
 				else if(x < A->right->data)
 				{
 					// 值为x的插入节点 是 被破坏节点A的右子树左边，RL双旋
-					A = RLRoation(A);
+					A = RLRotation(A);
 				}
 			}
 		}
@@ -187,7 +187,7 @@ AVLTree Insert(AVLTree A, int x)
 	// 更新树高
 	A->height = Max(GetHeight(A->left), GetHeight(A->right)) + 1;
 
-	return T;
+	return A;
 }
 
 int main()
