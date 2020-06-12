@@ -234,19 +234,19 @@ int PostOrderGetHeight(BinTree root)
 	int HL, HR, MaxH;
 	if(root)
 	{
-		// 求左子树的深度
+		// 求左子树的高度
 		HL = PostOrderGetHeight(root->Left);
-		// 求右子树的深度
+		// 求右子树的高度
 		HR = PostOrderGetHeight(root->Right);
-		// 取左右子树较大的深度
+		// 取左右子树较大的高度
 		MaxH = (HL > HR) ? HL : HR;
-		// 返回树的深度
+		// 返回树的高度
 		return (MaxH + 1);
 	}
 	else
 	{
-		// 空树深度为0
-		return 0;
+		// 空树高度为-1
+		return -1;
 	}
 }
 
