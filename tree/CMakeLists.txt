@@ -15,3 +15,6 @@ add_test(NAME BinarySearchTree COMMAND BinarySearchTree)
 
 add_executable(Avl Avl.cc)
 add_test(NAME Avl COMMAND Avl)
+
+add_executable(RBTree RBTree.cc)
+add_test(NAME RBTree COMMAND RBTree)
