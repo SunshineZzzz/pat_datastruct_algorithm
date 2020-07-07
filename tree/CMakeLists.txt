@@ -18,3 +18,6 @@ add_test(NAME Avl COMMAND Avl)
 
 add_executable(RBTree RBTree.cc)
 add_test(NAME RBTree COMMAND RBTree)
+
+add_executable(MaxHeap MaxHeap.cc)
+add_test(NAME MaxHeap COMMAND MaxHeap)
