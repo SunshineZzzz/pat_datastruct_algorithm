@@ -1136,6 +1136,50 @@ void delete_case5(struct node *n)
 
 - [x] [红黑树实现](./RBTree.cc)
 
+# 堆
+
+## 1.什么是堆
+
+优先队列（priority Queue）：特殊的"队列"，取出元素的顺序是依照元素的优先级（关键字）大小，而不是元素进入队列的先后顺序，以**完全二叉树**存储
+
+![堆1](../img/heap1.jpg)
+
+两个特性
+
+- 结构性：用**数组**表示的**完全二叉树**
+- 有序性：任一结点的关键字是其子树所有结点的最大值（或最小值）
+    - “最大堆(MaxHeap)”，也称"大顶堆"：最大值
+
+    ![堆2](../img/heap2.jpg)
+  
+    - “最小堆(MinHeap)”，也称"小顶堆"：最小值
+    
+    ![堆3](../img/heap3.jpg)
+
+![堆4](../img/heap4.jpg)
+
+### 2. 堆的抽象数据类型描述
+
+- 数据名称：最大堆（MaxHeap）
+- 数据对象集：完全二叉树，每个结点的元素值**不小于**其子结点的元素值
+- 操作集：最大堆 H ∈ MaxHeap，元素 item ∈ ElementType
+主要操作有：
+    - `MaxHeap Create(int MaxSize)`：创建一个空的最大堆
+    - `Boolean IsFull(MaxHeap H)`：判断最大堆 H 是否已满
+    - `Boolean Insert(MaxHeap H,ElementType item)`：将元素 item 插入最大堆 H
+    - `Boolean IsEmpty(MaxHeap H)`：判断最大堆 H 是否为空
+    - `ElementType DeleteMax(MaxHeap H)`：返回 H 中最大元素（高优先级）
+  
+### 1. 插入
+
+插入数组最后一个位置，再从下往上找合适地方
+
+### 2. 删除
+
+删除根结点，将数组最后一个位置的数取到根结点，从上往下找合适地方
+
+- [x] [最大堆实现](./MaxHeap.cc)
+
 # 相关代码
 
 - [x] [顺序查找实现](./Sequential_search.cc)
