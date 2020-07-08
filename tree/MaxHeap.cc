@@ -177,6 +177,8 @@ int main()
 	LevelOrderTraversal(H);
 	Delete(H, x);
 	LevelOrderTraversal(H);
-		
+
+	FreeHeap(H);
+
 	return 0;
 }

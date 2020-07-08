@@ -1251,7 +1251,7 @@ void delete_case5(struct node *n)
 
 【例】有五个叶子结点，它们的权值为{1,2,3,4,5},用此权值序列可以构造出形状不同的多个二叉树。
 
-![huffman12](G:\desktop\test\pat_datastruct_alo\img\huffman12.jpg)
+![huffman12](../img/huffman12.jpg)
 
 如果换一种结构，把频率低的放在前面，把频率高的放在后面，那么同样也可以得出这个值
 
@@ -1264,6 +1264,23 @@ void delete_case5(struct node *n)
 ![huffman15](../img/huffman15.jpg)
 
 所以这就是哈夫曼树要做的问题。
+
+哈夫曼树的特点：
+
+- 没有度为1的结点；(因为哈夫曼树构造的时候，它每次都是两个结点并在一起，形成一个新的结点，是不可能有度为1的结点的，那么由于没有度为1的结点之后呢，我们就可以得出这个结论，如果哈夫曼树有n个叶结点，那么总的结点数就是2n-1，为什么会有这个结论？大家还记得，在二叉树里面，我们把结点分为 **n0**，**n1**，**n2**这3类)
+- n个叶子结点的哈夫曼树共有2n-1个结点；
+
+![huffman16](../img/huffman16.jpg)
+
+n2 = n0 - 1  <=  n0 + n1 + n2 -1 = 0 x n0 + 1 x n1 + 2 x n2
+
+所以叶结点如果是n个，那么意味着有两个儿子的结点是n-1个，而度为1的节点是没有的，所以总结点数就是n0加n2，就是2n-1 <=  n2 = n0 - 1 => n2 = n - 1 => n - 1 + n = sum
+
+![huffman17](../img/huffman17.jpg)
+
+![huffman18](G:\desktop\test\pat_datastruct_alo\img\huffman18.jpg)
+
+- [x] [最小堆实现哈夫曼树](./Huffman.cc)
 
 # 相关代码
 
