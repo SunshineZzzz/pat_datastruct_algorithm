@@ -21,3 +21,6 @@ add_test(NAME RBTree COMMAND RBTree)
 
 add_executable(MaxHeap MaxHeap.cc)
 add_test(NAME MaxHeap COMMAND MaxHeap)
+
+add_executable(HuffmanTree HuffmanTree.cc)
+add_test(NAME HuffmanTree COMMAND HuffmanTree)

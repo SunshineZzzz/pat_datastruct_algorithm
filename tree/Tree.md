@@ -1280,7 +1280,7 @@ n2 = n0 - 1  <=  n0 + n1 + n2 -1 = 0 x n0 + 1 x n1 + 2 x n2
 
 ![huffman18](G:\desktop\test\pat_datastruct_alo\img\huffman18.jpg)
 
-- [x] [最小堆实现哈夫曼树](./Huffman.cc)
+- [x] [最小堆实现哈夫曼树](./HuffmanTree.cc)
 
 # 相关代码
 

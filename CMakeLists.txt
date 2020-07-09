@@ -32,3 +32,4 @@ message(STATUS "CXX_FLAGS = " ${CMAKE_CXX_FLAGS} " " ${CMAKE_CXX_FLAGS_${BUILD_T
 add_subdirectory(init)
 add_subdirectory(linear_struct)
 add_subdirectory(tree)
+add_subdirectory(graph)

@@ -36,6 +36,7 @@ MaxHeap CreateMaxHeap(int MaxSize)
 	return H;
 }
 
+// 释放最小堆
 void FreeHeap(MaxHeap& H)
 {
 	if (!H)
