@@ -1,0 +1,2 @@
+add_executable(GraphAdjacencyMatrix GraphAdjacencyMatrix.cc)
+add_test(NAME GraphAdjacencyMatrix COMMAND GraphAdjacencyMatrix)
