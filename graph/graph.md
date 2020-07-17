@@ -152,7 +152,7 @@ O(N+E)
 
 - [x] [无向图邻接表深度优先搜索实现](./DFS.cc)
 
-### 广度优先搜索(Breadth First Search, BFS)
+### 广度优先搜索
 
 ![图遍历13](../img/graph_traverse13.jpg)
 
