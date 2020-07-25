@@ -3,6 +3,8 @@
 	* [冒泡排序](#冒泡排序)
 	* [插入排序](#插入排序)
 	* [希尔排序](#希尔排序)
+	* [选择排序](#选择排序)
+	* [堆排序](#堆排序)
 
 # 排序前提
 
@@ -104,3 +106,77 @@
 - **Average Case Complexity**: `O(n*log n)`
 
 - [x] [希尔排序](./ShellSort.cc)
+
+## 选择排序
+
+1. Set the first element as `minimum`.
+
+![select_sort1](../img/select_sort1.jpg)
+
+2. Compare `minimum` with the second element. If the second element is smaller than `minimum`, assign the second element as `minimum`. Compare `minimum` with the third element. Again, if the third element is smaller, then assign `minimum` to the third element otherwise do nothing. The process goes on until the last element.
+
+![select_sort2](../img/select_sort2.jpg)
+
+3. After each iteration, `minimum` is placed in the front of the unsorted list.
+
+![select_sort3](../img/select_sort3.jpg)
+
+![select_sort4](../img/select_sort4.jpg)
+
+![select_sort5](../img/select_sort5.jpg)
+
+![select_sort6](../img/select_sort6.jpg)
+
+### Time Complexity
+
+- **Worst Case Complexity:** `O(n2)`
+  If we want to sort in ascending order and the array is in descending order then, the worst case occurs.
+- **Best Case Complexity:** `O(n2)`
+  It occurs when the array is already sorted
+- **Average Case Complexity:** `O(n2)`
+
+- [x] [选择排序](./SelectSort.cc)
+
+## 堆排序
+
+### Build max-heap
+
+To build a max-heap from any tree, we can thus start heapifying each sub-tree from the bottom up and end up with a max-heap after the function is applied to all the elements including the root element.
+
+In the case of a complete tree, the first index of a non-leaf node is given by `n/2 - 1`. All other nodes after that are leaf-nodes and thus don't need to be heapified.
+
+So, we can build a maximum heap as
+
+```C++
+    // Build heap (rearrange array)
+    for (int i = n / 2 - 1; i >= 0; i--)
+      heapify(arr, n, i);
+```
+
+![heap_sort1](../img/heap_sort1.jpg)Create array and calculate i
+
+![heap_sort2](../img/heap_sort2.jpg)Steps to build max heap for heap sort
+
+![heap_sort3](../img/heap_sort3.jpg)Steps to build max heap for heap sort
+
+![heap_sort4](../img/heap_sort4.jpg)Steps to build max heap for heap sort
+
+As shown in the above diagram, we start by heapifying the lowest smallest trees and gradually move up until we reach the root element.
+
+If you've understood everything till here, congratulations, you are on your way to mastering the Heap sort.
+
+### How Heap Sort Works?
+
+1. Since the tree satisfies Max-Heap property, then the largest item is stored at the root node.
+2. **Swap:** Remove the root element and put at the end of the array (nth position) Put the last item of the tree (heap) at the vacant place.
+3. **Remove:** Reduce the size of the heap by 1.
+4. **Heapify:** Heapify the root element again so that we have the highest element at root.
+5. The process is repeated until all the items of the list are sorted.
+
+![heap_sort5](../img/heap_sort5.jpg)
+
+### Time Complexity
+
+Heap Sort has O(nlog n) time complexities for all the cases ( best case, average case, and worst case).
+
+- [x] [堆排序](./HeapSort.cc)
