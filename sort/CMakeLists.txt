@@ -9,3 +9,6 @@ add_test(NAME ShellSort COMMAND ShellSort)
 
 add_executable(SelectSort SelectSort.cc)
 add_test(NAME SelectSort COMMAND SelectSort)
+
+add_executable(HeapSort HeapSort.cc)
+add_test(NAME HeapSort COMMAND HeapSort)
