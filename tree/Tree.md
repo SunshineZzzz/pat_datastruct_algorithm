@@ -1181,6 +1181,7 @@ void delete_case5(struct node *n)
 删除根结点，将数组最后一个位置的数取到根结点，从上往下找合适地方
 
 - [x] [最大堆实现](./MaxHeap.cc)
+- [x] [最小堆实现](./MinHeap.cc)
 
 # 哈夫曼树与哈夫曼码
 
