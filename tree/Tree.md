@@ -1182,6 +1182,7 @@ void delete_case5(struct node *n)
 
 - [x] [最大堆实现](./MaxHeap.cc)
 - [x] [最小堆实现](./MinHeap.cc)
+- [x] [最小堆C++模板封装实现](./MinHeapCpp.cc)
 
 # 哈夫曼树与哈夫曼码
 

@@ -72,7 +72,6 @@ void MinHeap_SiftDown(MinHeap* M, int index)
 	// 标识父结点
 	int parent_index = index;
 	// 用于记录值较小的子结点的小标
-	// 有没有右孩子不好说，一定有左孩子
 	int child_index = MinHeap_Leftchild(parent_index);
 	// 保存父结点的值
 	ElemType tempValue = M->heapArray[parent_index];
