@@ -19,6 +19,9 @@ add_test(NAME Arr_queue COMMAND Arr_queue)
 add_executable(Queue Queue.cc)
 add_test(NAME Queue COMMAND Queue)
 
+add_executable(QueueDummy QueueDummy.cc)
+add_test(NAME QueueDummy COMMAND QueueDummy)
+
 add_executable(Arithmetic Arithmetic.cc)
 add_test(NAME Arithmetic COMMAND Arithmetic)
 

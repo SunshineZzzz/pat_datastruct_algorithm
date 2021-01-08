@@ -141,6 +141,7 @@ front是指向队列头上的前一个，所以front+1指向的正好是队列�
 
 - [x] [队列的顺序存储实现](./Arr_queue.cc)
 - [x] [队列的链式存储实现](./Queue.cc)
+- [x] [队列的链式存储实现](./QueueDummy.cc)
 
 # 相关代码
 - [x] [一元多项式的乘法与加法运算](./Polynomial.cc)
